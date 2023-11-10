@@ -1,0 +1,244 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{courier}
+\usepackage[absolute,overlay]{textpos}
+%\usepackage[texcoord, grid,gridcolor=red!10,subgridcolor=green!10,gridunit=pt] {eso-pic}
+
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{caption}[numbered]
+
+
+%ref to this doc for future work: https://ctroupin.github.io/posts/2020-03-19-ppt2beamer/
+
+
+
+%=============================================== COLOR CONFIGURATIONS
+\definecolor{color1}{HTML}{003546}  %dark teal
+\definecolor{color2}{HTML}{ffffff}  %white
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{author}{fg=color2}
+\setbeamercolor{institute}{fg=color2}
+\setbeamercolor{frametitle}{fg=color1}
+\setbeamercolor{date}{fg=color2}
+\setbeamercolor{itemize item}{fg=color1}
+\setbeamercolor{caption name}{fg=color1}
+
+
+%=============================================== FOOT PAGE NUMBERS 
+\setbeamertemplate{sidebar right}{}
+\setbeamertemplate{footline}{%
+\hfill\usebeamertemplate***{navigation symbols} 
+\hspace{0.1cm} \vspace{0.1cm} \insertframenumber{} \hspace{0.2cm} \vspace{0.1cm}}
+
+
+%----------------------- DOCUMENT BEGINS HERE.. ----------------------- %
+\begin{document}
+
+
+%=============================================== TITLE 
+
+\begin{textblock*}{1000pt}(40pt,150pt)
+\color{white}  \huge
+    Monte Carlo Method and its applications
+\end{textblock*}
+\date{}
+
+
+{ \usebackgroundtemplate{\includegraphics[width=\paperwidth, height=\paperheight]{background1.pdf}}
+
+
+\begin{textblock*}{1000pt}(45pt,200pt)
+\color{white}  \small
+Xiaoshu Wang 
+\end{textblock*}
+
+\maketitle
+{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{background2.pdf}}
+
+%=============================================== Rest of the slides
+
+
+
+
+\begin{frame} {\huge What is Monte Carlo Method?}
+\begin{itemize}
+    \item Monte Carlo methods, or Monte Carlo experiments, are a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results. The underlying concept is to use randomness to solve problems that might be deterministic in principle. (Wikipedia)
+
+    \item Or more frankly speaking, Monte Carlo method can simulate the stochastic properties of a system by constructing a probabilistic model similar to the performance of the system and conducting lots and lots of randomized trials. It is a simulation process.
+
+
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame} {\huge History}
+\begin{itemize}
+    \item Before the Monte Carlo method was developed, simulations tested a previously understood deterministic problem, and statistical sampling was used to estimate uncertainties in the simulations. Monte Carlo simulations invert this approach, solving deterministic problems using probabilistic metaheuristics.
+
+    \item An early variant of the Monte Carlo method was devised to solve the Buffon's needle problem, in which $\pi$ can be estimated by dropping needles on a floor made of parallel equidistant strips. 
+
+    \item In the late 1940s, Stanislaw Ulam invented the modern version of the Markov Chain Monte Carlo method while he was working on nuclear weapons projects.
+    \item The theory of more sophisticated mean-field type particle Monte Carlo methods had certainly started by the mid-1960s, Quantum Monte Carlo, and more specifically diffusion Monte Carlo methods can also be interpreted during that period.
+
+    
+\end{itemize}
+\end{frame}
+
+\begin{frame} {\huge History}
+\begin{itemize}
+    \item The use of Sequential Monte Carlo in advanced signal processing and Bayesian inference is more recent.
+
+    \item The mathematical foundations and the first rigorous analysis of these particle algorithms were written by Pierre Del Moral in 1996.
+
+    \item Now it is very widely used in physics, engineering, biology, applied statistics, artificial intelligence, design, finance, and even in climate change, rescue, and law.                 
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame} {\huge Why is it so powerful?}
+\begin{itemize}
+    \item The traditional empirical methods can not approximate the real process, it is difficult to get satisfactory results, while the Monte Carlo method can realistically simulate the actual process, so the solution of the problem is very consistent with the actual and can get very satisfactory results. It is a computational method based on probability and statistical theory and is a method that uses random numbers (or more commonly pseudo-random numbers) to solve many computational problems. The power of computers eliminates the need for complicated mathematical interpretations and calculations, making them understandable and approachable to most people. Also, it can save a lot of time, improve the efficiency.
+
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame} {\huge A classic example}
+\begin{itemize}
+    \item First, consider a quadrant inscribed in a unit square (with each length of 1).
+    \item Then uniformly scatter a given number of points over the square
+    \item Count the number of points which has a distance from the origin of less than 1.
+    \item The ratio of number of points in the quadrant and total number of points is the estimation of $\pi$/4.
+    \item As we can see from the GIF, when n gets bigger, the estimation is closer to $\pi$.
+                                                                                   (Wikipedia)
+
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame} {\huge Common approaches}
+\begin{itemize}
+    \item 1. Define the domains of inputs 
+    \item 2. Construct or describe a probabilistic process for nonstochastic or stochastic process
+    \item 3. Randomized sample from the know probabilistic process
+    \item 4. Perform computation on the inputs to get outputs
+    \item 5. Aggregate the outputs and make inference
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame} {\huge Monte Carlo Simulation}
+
+        \begin{figure}
+        \centering
+        \includegraphics[scale=0.3]{1.png }
+        \caption{ simulation of one path of a call option and stock process}
+        \end{figure}  
+
+\end{frame}
+
+
+\begin{frame} {\huge Monte Carlo Simulation}
+
+        \begin{figure}
+        \centering
+        \includegraphics[scale=0.3]{2.png }
+        \caption{ plots of numerical solution and simulation}
+        \end{figure}  
+
+        \begin{itemize}
+    \item Here we have generated 1000 paths and plot the theoretical earnings and actual earnings. We can see that the earnings of our replication portfolio highly coincides with the result from  theoretical model. 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame} {\huge Monte Carlo Simulation}
+
+        \begin{figure}
+        \centering
+        \includegraphics[scale=0.3]{3.png }
+        \caption{ plot of error distribution}
+        \end{figure}  
+
+        \begin{itemize}
+    \item Here is a plot of the error distribution, vertical axis denotes the frequency and horizontal axis denotes the error between theoretical model and simulation. As we can see that, the error distribution approximately follows a normal distribution with mean 0, so we can trade more often to reduce the variance of error distribution.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame} {\huge Monte Carlo Simulation}
+
+        \begin{figure}
+        \centering
+        \includegraphics[scale=0.35]{4.png }
+        \caption{ another example in R of modeling indexed annuity}
+        \end{figure}  
+
+\end{frame}
+
+
+
+\begin{frame} {\huge Monte Carlo Simulation}
+
+        \begin{figure}
+        \centering
+        \includegraphics[scale=0.35]{5.png }
+        \caption{ another example in R of modeling indexed annuity}
+        \end{figure}  
+
+\end{frame}
+
+
+\begin{frame} {\huge Advantage}
+
+\begin{itemize}
+    \item The error has nothing to do with dimensions
+
+    \item Can easily handle continuous problem
+
+    \item Can simulate complicated situations that cannot be modeled using other methods
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame} {\huge Disadvantage}
+
+\begin{itemize}
+    \item Monte Carlo simulation may require lots of iterations and the algorithm could be computationally intensive and time-consuming
+    \item Highly relied on the goodness of assumptions of inputs, the model could be wrong at the beginning
+    \item May not reach convergence
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame} {\huge References}
+
+\begin{itemize}
+    \item https://en.wikipedia.org/wiki/Monte\_Carlo\_method
+    \item https://en.wikipedia.org/wiki/Black–Scholes\_model
+
+
+\end{itemize}
+\end{frame}
+
+
+%=============================================== LAST PAGE CONFIGURATIONS
+\AtEndDocument{
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{background3.pdf}}
+\begin{frame}
+\color{white} \Huge  Q\&A
+\end{frame} 
+}
+
+
+
+\end{document}
